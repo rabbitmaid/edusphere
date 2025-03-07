@@ -2,7 +2,7 @@
 
         <nav class="nav">
 
-            <div class="container relative mx-auto py-5 px-7 md:px-0 uppercase flex items-center justify-between">
+            <div class="container relative mx-auto py-5 px-7 lg:px-0 uppercase flex items-center justify-between">
 
                 <div class="nav__left">
                     <a href="" class="tracking-widest">

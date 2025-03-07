@@ -21,5 +21,7 @@ class DatabaseSeeder extends Seeder
         ]); */
 
         $this->call(RoleAndPermissionSeeder::class);
+        $this->call(CycleSeeder::class);
+        $this->call(ClassSeeder::class);
     }
 }
