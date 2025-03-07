@@ -2,8 +2,10 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class RoleAndPermissionSeeder extends Seeder
 {
@@ -12,6 +14,29 @@ class RoleAndPermissionSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        $roles = [
+            ['name' => 'administrator'],
+            ['name' => 'staff'],
+            ['name' => 'student']
+        ];
+
+        $permissions = [
+            ['name' => 'view users'],
+            ['name' => 'create users'],
+            ['name' => 'update users'],
+            ['name' => 'delete users'],
+            ['name' => 'activate users'],
+            ['name' => 'deactivate users'],
+        ];
+
+        foreach($roles as $role){
+            $create = Role::firstOrCreate(['name' => $role['name']]);
+        }
+
+        // Create permissions and assign to administrator
+        foreach($permissions as $permission) {
+            $create = Permission::firstOrCreate(['name' => $permission['name']]);
+            $create->assignRole('administrator');
+        }
     }
 }
