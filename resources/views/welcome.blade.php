@@ -11,7 +11,7 @@
                 </div>
 
                 <div class="nav__left">
-                    <a href="{{ route('register') }}" class="tracking-widest inline-block me-auto">Register</a>
+                    <a href="{{ route('register') }}" class="tracking-widest inline-block me-auto">Apply</a>
                     <a href="{{ route('login') }}" class="tracking-widest inline-block me-auto bg-indigo-600 hover:bg-indigo-500 cursor-pointer py-1 px-3 rounded-lg ms-4">Login</a>
                 </div>
                 

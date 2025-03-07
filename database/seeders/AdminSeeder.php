@@ -21,11 +21,15 @@ class AdminSeeder extends Seeder
             'email_verified_at' => now(),
             'password' => Hash::make('password'),
             'is_active' => true,
+            'gender' => 'male',
             'remember_token' => Str::random(10),
         ]);
 
         $user->assignRole('administrator');
 
+        \App\Models\Admin::create([
+            'user_id' => $user->id,
+        ]);
         
     }
 }
