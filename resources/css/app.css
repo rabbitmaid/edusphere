@@ -35,10 +35,10 @@
     --color-zinc-900: #312c85;
     --color-zinc-950: #1e1a4d; 
 
-    --color-accent: var(--color-neutral-800);
-    /* --color-accent: var(--color-indigo-800); */
-    --color-accent-content: var(--color-neutral-800);
-    /* --color-accent-content: var(--color-indigo-800); */
+    /* --color-accent: var(--color-neutral-800); */
+    --color-accent: var(--color-indigo-800);
+    /* --color-accent-content: var(--color-neutral-800); */
+    --color-accent-content: var(--color-indigo-800);
     --color-accent-foreground: var(--color-white);
 }
 
@@ -46,8 +46,8 @@
     .dark {
         --color-accent: var(--color-white);
         --color-accent-content: var(--color-white);
-        --color-accent-foreground: var(--color-neutral-800);
-        /* --color-accent-foreground: var(--color-indigo-800); */
+        /* --color-accent-foreground: var(--color-neutral-800); */
+        --color-accent-foreground: var(--color-indigo-800);
     }
 }
 
@@ -58,7 +58,8 @@
     ::before,
     ::backdrop,
     ::file-selector-button {
-        border-color: var(--color-gray-200, currentColor);
+        border-color: var(--color-indigo-200, currentColor);
+        /* border-color: var(--color-gray-200, currentColor); */
     }
 }
 
