@@ -1,7 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Dashboard\Admin\OverviewController;
 
 Route::get('/', function () {
     return view('welcome', [
@@ -9,9 +10,10 @@ Route::get('/', function () {
     ]);
 })->name('home');
 
-Route::view('dashboard', 'dashboard')
-    ->middleware(['auth', 'verified'])
-    ->name('dashboard');
+// Route::view('dashboard', 'dashboard')
+//     ->middleware(['auth', 'verified'])
+//     ->name('dashboard');
+
 
 Route::middleware(['auth'])->group(function () {
     Route::redirect('settings', 'settings/profile');
@@ -22,3 +24,5 @@ Route::middleware(['auth'])->group(function () {
 });
 
 require __DIR__.'/auth.php';
+require __DIR__.'/admin.php';
+require __DIR__.'/student.php';

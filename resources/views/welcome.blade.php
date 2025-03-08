@@ -21,7 +21,7 @@
 
 
             <!-- Start Hero -->
-            <section class="relative table w-full py-10 px-7 md:px-0  overflow-hidden min-h-screen">
+            <section class="relative table w-full py-8 px-7 lg:px-0  overflow-hidden min-h-screen">
                 <div class="container relative mx-auto">
                     <div class="relative grid md:grid-cols-12 grid-cols-1 items-center mt-10 gap-[30px]">
                         <div class="md:col-span-6">
