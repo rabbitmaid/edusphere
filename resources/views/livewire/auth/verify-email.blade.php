@@ -13,7 +13,15 @@ new #[Layout('components.layouts.auth')] class extends Component {
     public function sendVerification(): void
     {
         if (Auth::user()->hasVerifiedEmail()) {
-            $this->redirectIntended(default: route('dashboard', absolute: false), navigate: true);
+
+            if(Auth::user()->hasRole(\App\Helpers\Roles::ADMINISTRATOR) || Auth::user()->hasRole(\App\Helpers\Roles::STAFF)){
+                $this->redirectIntended(default: route('admin.dashboard', absolute: false), navigate: true);
+            }
+            else {
+                $this->redirectIntended(default: route('student.dashboard', absolute: false), navigate: true);
+            }
+
+            // $this->redirectIntended(default: route('dashboard', absolute: false), navigate: true);
 
             return;
         }

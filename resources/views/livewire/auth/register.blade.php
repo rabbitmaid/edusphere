@@ -31,7 +31,15 @@ new #[Layout('components.layouts.auth')] class extends Component {
 
         Auth::login($user);
 
-        $this->redirect(route('dashboard', absolute: false), navigate: true);
+        if(Auth::user()->hasRole(\App\Helpers\Roles::ADMINISTRATOR) || Auth::user()->hasRole(\App\Helpers\Roles::STAFF)){
+            $this->redirectIntended(default: route('admin.dashboard', absolute: false), navigate: true);
+        }
+        else {
+            $this->redirectIntended(default: route('student.dashboard', absolute: false), navigate: true);
+        }
+
+        
+        // $this->redirect(route('dashboard', absolute: false), navigate: true);
     }
 }; ?>
 
