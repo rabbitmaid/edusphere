@@ -8,7 +8,7 @@
             </div>
 
             <div>
-                {{-- <flux:button href="{{ route('admin.dashboard.users.create') }}" wire:navigate='true' variant="primary" class="block uppercase text-xs font-semibold tracking-widest cursor-pointer">Add User</flux:button> --}}
+                <flux:button href="{{ route('admin.dashboard.users.create') }}" wire:navigate='true' variant="primary" class="block uppercase text-xs font-semibold tracking-widest cursor-pointer">Add User</flux:button>
             </div>
         </div>
         <flux:separator variant="subtle" />
@@ -23,8 +23,8 @@
                         <th>#</th>
                         <th>Name</th>
                         <th>Email</th>
-                        <th>Roles</th>
-                        <th>Email Verification</th>
+                        <th>Role</th>
+                        <th>Email</th>
                         <th>Account</th>
                         <th>Created</th>
                         <th>Action</th>
@@ -72,7 +72,7 @@
                                 @endif
                             </td>
                             <td>{{ $user->created_at->diffForHumans() }}</td>
-                            <td>
+                            <td class="flex items-center gap-2">
                                 {{-- Admin cannot use this control on his or herself --}}
                                 @if(auth()->user()->id !== $user->id)
                                     <flux:dropdown>
@@ -84,29 +84,23 @@
                                     
                                             <flux:menu>
                                                 @can('update users')
-                                                    {{-- <flux:menu.item href="{{ route('admin.dashboard.users.edit', $user->id) }}" wire:navigate='true'  icon="pencil" class="cursor-pointer">Edit</flux:menu.item>
-                                                    <flux:menu.separator /> --}}
+                                                    <flux:menu.item href="{{ route('admin.dashboard.users.edit', $user->id) }}" wire:navigate='true'  icon="pencil" class="cursor-pointer">Edit</flux:menu.item>
                                                 @endcan
 
-                                                {{-- Do not change role of client --}}
-                                                @if(!$user->hasRole('client'))
-                                                    @can('manage users roles')
-                                                    
-                                                        {{-- <flux:menu.item href="{{ route('admin.dashboard.users.role', $user->id) }}" wire:navigate='true'   icon="finger-print" class="cursor-pointer">Roles</flux:menu.item>
-                                                        <flux:menu.separator /> --}}
-                                                    @endcan
-                                                @endif
-
-
-                                                @can('delete users')
-                                                    {{-- <livewire:dashboard.admin.users.delete :id="$user->id" /> --}}
+                                                @can('view users')
+                                                    <flux:menu.separator />
+                                                    <flux:menu.item href="{{ route('admin.dashboard.users.show', $user->id) }}" wire:navigate='true'  icon="eye" class="cursor-pointer">View</flux:menu.item>
                                                 @endcan
-                                                    
+
                                             </flux:menu>
                                     
                                     </flux:dropdown>
+                                        
                                 @endif
-                          
+
+                                @can('delete users')
+                                    <livewire:dashboard.admin.users.delete :id="$user->id" />
+                                @endcan
                             </td>
                         </tr>
     
@@ -122,8 +116,8 @@
                         <th>#</th>
                         <th>Name</th>
                         <th>Email</th>
-                        <th>Roles</th>
-                        <th>Email Verification</th>
+                        <th>Role</th>
+                        <th>Email</th>
                         <th>Account</th>
                         <th>Created</th>
                         <th>Action</th>

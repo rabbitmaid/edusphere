@@ -37,34 +37,29 @@
 
 
 
-                @can('view users')
-
-                {{--                 
-                    <flux:navlist.group expandable heading="Users" :expanded="request()->routeIs('admin.dashboard.users*')" icon="user-group"  variant="outline">
-
-                        <flux:navlist.item href="{{ route('admin.dashboard.users') }}" icon="user-group"  :current="request()->routeIs('admin.dashboard.users')" wire:navigate>All Users</flux:navlist.item>
-                
-
-                        @can('create users')
-                            <flux:navlist.item href="{{ route('admin.dashboard.users.create') }}" icon="plus" :current="request()->routeIs('admin.dashboard.users.create')" wire:navigate>Add User</flux:navlist.item>
-                        @endcan
-                    </flux:navlist.group> 
-                --}}
-
-           
+            @can('view users')
 
             <flux:navlist variant="outline">
                 <flux:navlist.group heading="User Management" class="grid">
-                    <flux:navlist.item icon="user" :href="route('admin.dashboard.users')" :current="request()->routeIs('admin.dashboard.users')" wire:navigate>{{ __('Users') }}</flux:navlist.item>
+                    <flux:navlist.item icon="user" :href="route('admin.dashboard.users')" :current="request()->routeIs('admin.dashboard.users*')" wire:navigate>{{ __('Users') }}</flux:navlist.item>
                     @can('create users')
                     {{-- <flux:navlist.item href="{{ route('admin.dashboard.users.create') }}" icon="plus" :current="request()->routeIs('admin.dashboard.users.create')" wire:navigate>Add User</flux:navlist.item> --}}
                 @endcan
                 </flux:navlist.group>
             </flux:navlist>
 
-
             @endcan
 
+
+            @can('view users')
+            <flux:navlist variant="outline">
+                <flux:navlist.group heading="Profile Management" class="grid">
+                    @can('create users')
+                        <flux:navlist.item icon="user-group" :href="route('admin.dashboard.students')" :current="request()->routeIs('admin.dashboard.students*')" wire:navigate>{{ __('Students') }}</flux:navlist.item>
+                    @endcan
+                </flux:navlist.group>
+            </flux:navlist>
+            @endcan
 
           
 
@@ -94,7 +89,7 @@
                             <div class="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
                                 <span class="relative flex h-8 w-8 shrink-0 overflow-hidden rounded-lg">
                                     <span
-                                        class="flex h-full w-full items-center justify-center rounded-lg bg-neutral-200 text-black dark:bg-indigo-900 dark:text-white"
+                                        class="flex h-full w-full items-center justify-center rounded-lg bg-neutral-200 text-black dark:bg-zinc-900 dark:text-white"
                                     >
                                         {{ auth()->user()->initials() }}
                                     </span>
@@ -144,7 +139,7 @@
                             <div class="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
                                 <span class="relative flex h-8 w-8 shrink-0 overflow-hidden rounded-lg">
                                     <span
-                                        class="flex h-full w-full items-center justify-center rounded-lg bg-neutral-200 text-black dark:bg-indigo-700 dark:text-white"
+                                        class="flex h-full w-full items-center justify-center rounded-lg bg-neutral-200 text-black dark:bg-zinc-700 dark:text-white"
                                     >
                                         {{ auth()->user()->initials() }}
                                     </span>
