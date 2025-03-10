@@ -34,6 +34,38 @@
                     </flux:navlist>
                 @endif
 
+
+
+
+                @can('view users')
+
+                {{--                 
+                    <flux:navlist.group expandable heading="Users" :expanded="request()->routeIs('admin.dashboard.users*')" icon="user-group"  variant="outline">
+
+                        <flux:navlist.item href="{{ route('admin.dashboard.users') }}" icon="user-group"  :current="request()->routeIs('admin.dashboard.users')" wire:navigate>All Users</flux:navlist.item>
+                
+
+                        @can('create users')
+                            <flux:navlist.item href="{{ route('admin.dashboard.users.create') }}" icon="plus" :current="request()->routeIs('admin.dashboard.users.create')" wire:navigate>Add User</flux:navlist.item>
+                        @endcan
+                    </flux:navlist.group> 
+                --}}
+
+           
+
+            <flux:navlist variant="outline">
+                <flux:navlist.group heading="User Management" class="grid">
+                    <flux:navlist.item icon="user" :href="route('admin.dashboard.users')" :current="request()->routeIs('admin.dashboard.users')" wire:navigate>{{ __('Users') }}</flux:navlist.item>
+                    @can('create users')
+                    {{-- <flux:navlist.item href="{{ route('admin.dashboard.users.create') }}" icon="plus" :current="request()->routeIs('admin.dashboard.users.create')" wire:navigate>Add User</flux:navlist.item> --}}
+                @endcan
+                </flux:navlist.group>
+            </flux:navlist>
+
+
+            @endcan
+
+
           
 
             <flux:spacer />
