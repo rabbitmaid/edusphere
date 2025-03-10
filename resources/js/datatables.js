@@ -1,7 +1,6 @@
 import DataTable from 'datatables.net-dt';
 import "../css/datatables.css";
 
-
 document.addEventListener('livewire:navigated', () => {
     
         const selectors = document.querySelectorAll('.dt-table');
@@ -16,10 +15,5 @@ document.addEventListener('livewire:navigated', () => {
                 location.reload(); 
             });
             
-            
         }); 
-
-
-
-
 });

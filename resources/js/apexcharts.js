@@ -4,7 +4,8 @@ document.addEventListener('livewire:navigated', () => {
 
     var options = {
         chart: {
-          type: 'line'
+          type: 'line',
+          height: 400
         },
         series: [{
           name: 'sales',

@@ -15,7 +15,7 @@
 
 
          <!--[if BLOCK]><![endif]-->
-        <div class="relative overflow-x-auto shadow-md sm:rounded-lg" wire:ignore>
+        <div class="relative overflow-x-auto sm:rounded-lg" wire:ignore>
 
             <table class="dt-table display" style="width:100%">
                 <thead>
