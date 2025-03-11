@@ -96,11 +96,11 @@
                                     
                                     </flux:dropdown>
                                         
+                                    @can('delete users')
+                                        <livewire:dashboard.admin.users.delete :id="$user->id" />
+                                    @endcan
                                 @endif
 
-                                @can('delete users')
-                                    <livewire:dashboard.admin.users.delete :id="$user->id" />
-                                @endcan
                             </td>
                         </tr>
     

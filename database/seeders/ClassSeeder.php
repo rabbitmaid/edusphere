@@ -17,11 +17,11 @@ class ClassSeeder extends Seeder
         $cycles = DB::table('cycles')->pluck('id', 'name');
 
         $classes = [
-            ['name' => 'Class 1', 'cycle_id' => $cycles['First Cycle']],
-            ['name' => 'Class 2', 'cycle_id' => $cycles['First Cycle']],
-            ['name' => 'Class 3', 'cycle_id' => $cycles['First Cycle']],
-            ['name' => 'Class 4', 'cycle_id' => $cycles['First Cycle']],
-            ['name' => 'Class 5', 'cycle_id' => $cycles['First Cycle']],
+            ['name' => 'Form 1', 'cycle_id' => $cycles['First Cycle']],
+            ['name' => 'Form 2', 'cycle_id' => $cycles['First Cycle']],
+            ['name' => 'Form 3', 'cycle_id' => $cycles['First Cycle']],
+            ['name' => 'Form 4', 'cycle_id' => $cycles['First Cycle']],
+            ['name' => 'Form 5', 'cycle_id' => $cycles['First Cycle']],
             ['name' => 'Lower Sixth', 'cycle_id' => $cycles['Second Cycle']],
             ['name' => 'Upper Sixth', 'cycle_id' => $cycles['Second Cycle']]
         ];
