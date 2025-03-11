@@ -12,4 +12,9 @@ class SchoolClass extends Model
         'name',
         'cycle_id'
     ];
+
+    public function students()
+    {
+        return $this->hasMany(Student::class);
+    }
 }

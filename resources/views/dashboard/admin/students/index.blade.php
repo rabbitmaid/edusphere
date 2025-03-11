@@ -8,7 +8,7 @@
             </div>
 
             <div>
-                <flux:button href="{{ route('admin.dashboard.users.create') }}" wire:navigate='true' variant="primary" class="block uppercase text-xs font-semibold tracking-widest cursor-pointer">Add Student</flux:button>
+                <flux:button href="{{ route('admin.dashboard.students.create') }}" wire:navigate='true' variant="primary" class="block uppercase text-xs font-semibold tracking-widest cursor-pointer">Add Student</flux:button>
             </div>
         </div>
         <flux:separator variant="subtle" />
@@ -37,45 +37,13 @@
                         
                         <tr>
                             <td>{{ $loop->iteration }}</td>
-                            <td></td>
-                            <td></td>
+                            <td>{{ $student->user->name }}</td>
+                            <td>{{ $student->matricule }}</td>
+                            <td>{{ $student->class->name }}</td>
+                            <td>{{ $student->address }}</td>
                             <td>{{ $student->created_at->diffForHumans() }}</td>
                             <td class="flex items-center gap-2">
-                                {{-- Admin cannot use this control on his or herself --}}
-                                @if(auth()->user()->id !== $user->id)
-                                    <flux:dropdown>
-                                    
-                                            <flux:button icon-trailing="chevron-down"  class="cursor-pointer">
-                                                <flux:icon.adjustments-horizontal />
-                                            </flux:button>
                                 
-                                    
-                                            <flux:menu>
-                                                @can('update users')
-                                                    <flux:menu.item href="{{ route('admin.dashboard.users.edit', $user->id) }}" wire:navigate='true'  icon="pencil" class="cursor-pointer">Edit</flux:menu.item>
-                                                  
-                                                @endcan
-
-                                                {{-- Do not change role of client
-                                                @if(!$user->hasRole('client'))
-                                                    @can('manage users roles')
-                                                    <flux:menu.separator />
-                                                    
-                                                        {{-- <flux:menu.item href="{{ route('admin.dashboard.users.role', $user->id) }}" wire:navigate='true'   icon="finger-print" class="cursor-pointer">Roles</flux:menu.item>
-                                                        <flux:menu.separator /> --}}
-
-                                                    {{-- @endcan
-                                                @endif--}}
-
-                                            </flux:menu>
-                                    
-                                    </flux:dropdown>
-                                        
-                                @endif
-
-                                @can('delete users')
-                                    <livewire:dashboard.admin.users.delete :id="$user->id" />
-                                @endcan
                             </td>
                         </tr>
     

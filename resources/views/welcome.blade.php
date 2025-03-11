@@ -19,15 +19,14 @@
 
         </nav>
 
-
             <!-- Start Hero -->
-            <section class="relative table w-full py-8 px-7 lg:px-0  overflow-hidden min-h-screen">
+            <section class="relative table w-full py-4 px-7 lg:px-0  overflow-hidden min-h-screen">
                 <div class="container relative mx-auto">
                     <div class="relative grid md:grid-cols-12 grid-cols-1 items-center mt-10 gap-[30px]">
                         <div class="md:col-span-6">
                             <div class="md:me-8">
                                 <h4 class="font-bold lg:leading-normal leading-normal text-4xl lg:text-5xl mb-5 text-black dark:text-white relative">Easiest way to <span class="before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-indigo-600 relative inline-block"><span class="relative text-white">manage</span></span> your students</h4>
-                                <p class="text-slate-400 text-lg max-w-xl">Edusphere software application is designed to manage and automate various aspects of student data and administrative processes in schools, colleges, and universities.</p>
+                                <p class="text-slate-400 text-lg max-w-xl">Edusphere software application is designed to manage and automate various aspects of student data and administrative processes in schools.</p>
 
                                 <p class="text-slate-400 text-lg max-w-xl mt-8">Don't yet have an account?  You can register.</p>
                             
@@ -40,7 +39,7 @@
                         <div class="md:col-span-6">
                             <div class="relative">
                                 <div class="relative rounded-xl overflow-hidden shadow-md dark:shadow-gray-800">
-                                    <div class="w-full py-72 bg-slate-400 bg-[url('../../assets/images/saas/home.jpg')] bg-cover bg-no-repeat bg-top jarallax" data-jarallax data-speed="0.5"></div>
+                                    <div class="w-full py-72 bg-slate-400 bg-home bg-cover bg-no-repeat bg-top"></div>
                                 </div>
     
                                 <div class="absolute flex justify-between items-center md:bottom-10 bottom-5 md:-start-16 p-4 rounded-lg shadow-md dark:shadow-gray-800 bg-white dark:bg-slate-900 w-60 m-3">

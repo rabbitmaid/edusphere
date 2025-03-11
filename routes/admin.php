@@ -18,6 +18,8 @@ Route::prefix('admin')->middleware(['auth', 'verified'])->group(function() {
 
     Route::get('/students', [StudentController::class, 'index'])->name('admin.dashboard.students');
 
+    Route::get('/students/create', [StudentController::class, 'create'])->name('admin.dashboard.students.create');
+
 
 
 });

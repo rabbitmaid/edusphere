@@ -82,6 +82,10 @@ select:focus[data-flux-control] {
     @apply size-4;
 } */
 
+.bg-home {
+    background: url("/public/assets/screenshot.png");
+}
+
 /* Datatables additional styles */
 
 
