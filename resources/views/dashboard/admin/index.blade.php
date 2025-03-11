@@ -67,7 +67,7 @@
 
             <div class="md:col-span-1 relative py-8 px-8 overflow-hidden rounded-xl border border-zinc-200 dark:border-neutral-700 bg-zinc-50 dark:bg-zinc-900 flex items-center justify-center">
                 <p class="text-accent dark:text-white absolute top-5 left-5">Gender Chart</p>
-                <div id="genderChart"></div>
+                <div id="genderChart" data-chart="{{ json_encode(['male' => $totalMaleUsers, 'female' => $totalFemaleUsers]) }}"></div>
             </div>
             
         </div>

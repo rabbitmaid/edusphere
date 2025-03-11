@@ -43,7 +43,33 @@
                             <td>{{ $student->address }}</td>
                             <td>{{ $student->created_at->diffForHumans() }}</td>
                             <td class="flex items-center gap-2">
+                        
+                                <flux:dropdown>
                                 
+                                        <flux:button icon-trailing="chevron-down"  class="cursor-pointer">
+                                            <flux:icon.adjustments-horizontal />
+                                        </flux:button>
+                            
+                                
+                                        <flux:menu>
+                                            @can('update students')
+                                                <flux:menu.item href="{{ route('admin.dashboard.users.edit', $student->user->id) }}" wire:navigate='true'  icon="pencil" class="cursor-pointer">Edit</flux:menu.item>
+                                            @endcan
+
+                                            @can('view students')
+                                                <flux:menu.separator />
+                                                <flux:menu.item href="{{ route('admin.dashboard.users.show',$student->user->id) }}" wire:navigate='true'  icon="eye" class="cursor-pointer">View</flux:menu.item>
+                                            @endcan
+
+                                        </flux:menu>
+                                
+                                </flux:dropdown>
+                                        
+                          
+
+                                @can('delete students')
+                                    <livewire:dashboard.admin.users.delete :id="$student->user->id" />
+                                @endcan
                             </td>
                         </tr>
     

@@ -27,6 +27,10 @@ class RoleAndPermissionSeeder extends Seeder
             ['name' => 'delete users'],
             ['name' => 'activate users'],
             ['name' => 'deactivate users'],
+            ['name' => 'view students'],
+            ['name' => 'create students'],
+            ['name' => 'update students'],
+            ['name' => 'delete students']
         ];
 
         foreach($roles as $role){

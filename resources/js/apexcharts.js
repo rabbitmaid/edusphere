@@ -79,6 +79,11 @@ document.addEventListener('livewire:navigated', () => {
 
    if(genderChartElement !== null) {
 
+    let genderChartData = JSON.parse(genderChartElement.getAttribute('data-chart'));
+
+    console.log(genderChartData);
+
+
     let preferredScheme = Flux.appearance;
     
     let options = {
@@ -123,7 +128,7 @@ document.addEventListener('livewire:navigated', () => {
           theme: preferredScheme
         },
 
-        series: [44, 55],
+        series: [genderChartData.male, genderChartData.female],
         labels: ['Male', 'Female']
       }
       
