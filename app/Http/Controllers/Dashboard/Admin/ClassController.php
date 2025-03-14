@@ -6,6 +6,7 @@ use App\Models\Student;
 use App\Models\SchoolClass;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class ClassController extends Controller
 {
@@ -36,5 +37,13 @@ class ClassController extends Controller
             'students' => $students,
             'class' => $class
         ]);
+    }
+
+    public function list(int $id) 
+    {
+        $class = SchoolClass::findOrFail($id);
+        $students = Student::where(['class_id' => $id])->get();
+        $pdf = Pdf::loadView('pdf.classlist', ['students' => $students, 'class' => $class]);
+        return $pdf->download(strtolower(str_replace(' ', '_',$class->name))."_classlist.pdf");
     }
 }

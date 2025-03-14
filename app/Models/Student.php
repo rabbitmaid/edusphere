@@ -16,6 +16,13 @@ class Student extends Model
         'phone'
     ];
 
+    protected function casts(): array
+    {
+        return [
+            'date_of_birth' => 'datetime'
+        ];
+    }
+
 
     public function user(){
         return $this->belongsTo(User::class);

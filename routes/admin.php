@@ -31,6 +31,9 @@ Route::prefix('admin')->middleware(['auth', 'verified'])->group(function() {
 
     Route::get('classes/student/{id}', [ClassController::class, 'student'])->name('admin.dashboard.classes.student');
 
+    Route::get('classes/student/list/{id}', [ClassController::class, 'list'])->name('admin.dashboard.classes.list');
+    
+
 
 
 });

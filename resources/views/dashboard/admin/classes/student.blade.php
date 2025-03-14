@@ -9,8 +9,8 @@
             </div>
 
             <div>
-                <flux:button href="{{ route('admin.dashboard.students.create') }}" wire:navigate='true' variant="primary"
-                    class="block uppercase text-xs font-semibold tracking-widest cursor-pointer">Get Class List
+                <flux:button href="{{ route('admin.dashboard.classes.list', $class->id) }}" rel="noopener noreferrer" variant="primary"
+                    class="block uppercase text-xs font-semibold tracking-widest cursor-pointer">Get Class List 
                 </flux:button>
             </div>
         </div>
