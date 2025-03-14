@@ -39,7 +39,10 @@
                             <td>{{ $class->name }}</td>
                             <td>{{ $class->cycle->name }}</td>
                             <td>
-                                <flux:badge color="lime">{{ $class->totalStudents() }}</flux:badge>
+                                <flux:button href="{{ route('admin.dashboard.classes.student', $class->id) }}" wire:navigate> 
+                                    <flux:badge color="indigo" class="min-w-5 h-5">{{ $class->totalStudents() }}</flux:badge>
+                                    <span>Students </span>
+                                </flux:button>
                             </td>
                             <td>{{ $class->created_at->diffForHumans() }}</td>
                             <td class="flex items-center gap-2">
@@ -55,10 +58,6 @@
        
                                             <flux:menu.item href="{{ route('admin.dashboard.classes.edit', $class->id) }}" wire:navigate='true'  icon="pencil" class="cursor-pointer">Edit</flux:menu.item>
 
-                                            <flux:menu.separator />
-
-                                            <flux:menu.item href="{{ route('admin.dashboard.classes.student', $class->id) }}" wire:navigate='true'  icon="eye" class="cursor-pointer">View Students</flux:menu.item>
-                                     
                                         </flux:menu>
                                 
                                 </flux:dropdown>

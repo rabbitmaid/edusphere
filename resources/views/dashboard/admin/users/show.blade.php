@@ -6,10 +6,8 @@
         <flux:separator variant="subtle" />
 
         <div class="mt-5 w-full max-w-lg">
-            <section class="w-full grid grid-cols-3 gap-y-6">
-                <p><span class="font-semibold">Name:</span> <br /> {{ $user->name }}</p>
-                <p><span class="font-semibold">Email:</span> <br /> {{ $user->email }}</p>
-                <p><span class="font-semibold">Gender:</span> <br /> {{ $user->gender }}</p>
+            <section class="w-full">
+                <livewire:dashboard.admin.users.view :id="$user->id" />
             </section>
         </div>
     

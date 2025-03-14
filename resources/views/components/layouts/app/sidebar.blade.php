@@ -54,7 +54,7 @@
             <flux:navlist variant="outline">
                 <flux:navlist.group heading="School Management" class="grid">
                  
-                        <flux:navlist.item icon="user-group" :href="route('admin.dashboard.students')" :current="request()->routeIs('admin.dashboard.students*')" wire:navigate>{{ __('Students') }}</flux:navlist.item>
+                        <flux:navlist.item icon="user-group" :href="route('admin.dashboard.students')" :current="request()->routeIs('admin.dashboard.students*')" class="mb-2" wire:navigate>{{ __('Students') }}</flux:navlist.item>
 
 
                         <flux:navlist.item icon="home-modern" :href="route('admin.dashboard.classes')" :current="request()->routeIs('admin.dashboard.classes*')" wire:navigate>{{ __('Classes') }}</flux:navlist.item>
