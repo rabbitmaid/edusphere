@@ -1,8 +1,9 @@
 <?php
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Dashboard\Admin\UserController;
-use App\Http\Controllers\Dashboard\Admin\OverviewController;
+use App\Http\Controllers\Dashboard\Admin\ClassController;
 use App\Http\Controllers\Dashboard\Admin\StudentController;
+use App\Http\Controllers\Dashboard\Admin\OverviewController;
 
 Route::prefix('admin')->middleware(['auth', 'verified'])->group(function() {
     
@@ -19,6 +20,10 @@ Route::prefix('admin')->middleware(['auth', 'verified'])->group(function() {
     Route::get('/students', [StudentController::class, 'index'])->name('admin.dashboard.students');
 
     Route::get('/students/create', [StudentController::class, 'create'])->name('admin.dashboard.students.create');
+
+    Route::get('/classes', [ClassController::class, 'index'])->name('admin.dashboard.classes');
+
+    Route::get('classes/edit/{id}', [ClassController::class, 'edit'])->name('admin.dashboard.classes.edit');
 
 
 

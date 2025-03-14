@@ -17,4 +17,9 @@ class SchoolClass extends Model
     {
         return $this->hasMany(Student::class);
     }
+
+    public function cycle()
+    {
+        return $this->belongsTo(Cycle::class);
+    }
 }
