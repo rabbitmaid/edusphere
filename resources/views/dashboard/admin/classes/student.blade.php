@@ -75,7 +75,7 @@
 
 
                                     @can('delete students')
-                                        <livewire:dashboard.admin.users.delete :id="$student->user->id" />
+                                    <livewire:dashboard.admin.students.delete :id="$student->id" />
                                     @endcan
                                 </td>
                             </tr>
