@@ -22,4 +22,9 @@ class SchoolClass extends Model
     {
         return $this->belongsTo(Cycle::class);
     }
+
+    public function totalStudents()
+    {
+        return Student::where('class_id', $this->id)->get()->count();
+    }
 }

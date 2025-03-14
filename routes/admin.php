@@ -21,9 +21,15 @@ Route::prefix('admin')->middleware(['auth', 'verified'])->group(function() {
 
     Route::get('/students/create', [StudentController::class, 'create'])->name('admin.dashboard.students.create');
 
+    Route::get('/students/edit/{id}', [StudentController::class, 'edit'])->name('admin.dashboard.students.edit');
+
+    Route::get('/students/view/{id}', [StudentController::class, 'show'])->name('admin.dashboard.students.show');
+
     Route::get('/classes', [ClassController::class, 'index'])->name('admin.dashboard.classes');
 
     Route::get('classes/edit/{id}', [ClassController::class, 'edit'])->name('admin.dashboard.classes.edit');
+
+    Route::get('classes/student/{id}', [ClassController::class, 'student'])->name('admin.dashboard.classes.student');
 
 
 

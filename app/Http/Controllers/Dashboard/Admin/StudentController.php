@@ -20,4 +20,22 @@ class StudentController extends Controller
     {
         return view('dashboard.admin.students.create');
     }
+
+    public function edit(int $id)
+    {
+        $student = Student::findOrFail($id);
+
+        return view('dashboard.admin.students.edit', [
+            'student' => $student
+        ]);
+    }
+
+    public function show(int $id) 
+    {
+        $student = Student::findOrFail($id);
+
+        return view('dashboard.admin.students.show', [
+            'student' => $student
+        ]);
+    }
 }

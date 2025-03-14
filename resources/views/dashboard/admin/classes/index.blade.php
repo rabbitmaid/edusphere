@@ -23,6 +23,7 @@
                         <th>#</th>
                         <th>Name</th>
                         <th>Cycle</th>
+                        <th>Students</th>
                         <th>Created</th>
                         <th>Action</th>
                     </tr>
@@ -37,6 +38,9 @@
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $class->name }}</td>
                             <td>{{ $class->cycle->name }}</td>
+                            <td>
+                                <flux:badge color="lime">{{ $class->totalStudents() }}</flux:badge>
+                            </td>
                             <td>{{ $class->created_at->diffForHumans() }}</td>
                             <td class="flex items-center gap-2">
                         
@@ -50,12 +54,16 @@
                                         <flux:menu>
        
                                             <flux:menu.item href="{{ route('admin.dashboard.classes.edit', $class->id) }}" wire:navigate='true'  icon="pencil" class="cursor-pointer">Edit</flux:menu.item>
+
+                                            <flux:menu.separator />
+
+                                            <flux:menu.item href="{{ route('admin.dashboard.classes.student', $class->id) }}" wire:navigate='true'  icon="eye" class="cursor-pointer">View Students</flux:menu.item>
                                      
                                         </flux:menu>
                                 
                                 </flux:dropdown>
-                                        
-    
+
+        
                             </td>
                         </tr>
     
@@ -71,6 +79,7 @@
                         <th>#</th>
                         <th>Name</th>
                         <th>Cycle</th>
+                        <th>Students</th>
                         <th>Created</th>
                         <th>Action</th>
                     </tr>

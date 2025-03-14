@@ -3,12 +3,12 @@
         
         <div class="flex flex-col md:flex-row items-center justify-between gap-3 md:gap-0">
             <div>
-                <flux:heading size="xl" level="1" class="text-center md:text-start">All Students</flux:heading>
+                <flux:heading size="xl" level="1" class="text-center md:text-start">All Students in {{ $class->name }}</flux:heading>
                 <flux:subheading size="lg" class="mb-6">Manage all existing students</flux:subheading>
             </div>
 
             <div>
-                <flux:button href="{{ route('admin.dashboard.students.create') }}" wire:navigate='true' variant="primary" class="block uppercase text-xs font-semibold tracking-widest cursor-pointer">Add Student</flux:button>
+                <flux:button href="{{ route('admin.dashboard.students.create') }}" wire:navigate='true' variant="primary" class="block uppercase text-xs font-semibold tracking-widest cursor-pointer">Get Class List</flux:button>
             </div>
         </div>
         <flux:separator variant="subtle" />
@@ -53,12 +53,12 @@
                                 
                                         <flux:menu>
                                             @can('update students')
-                                                <flux:menu.item href="{{ route('admin.dashboard.students.edit', $student->id) }}" wire:navigate='true'  icon="pencil" class="cursor-pointer">Edit</flux:menu.item>
+                                                <flux:menu.item href="{{ route('admin.dashboard.users.edit', $student->user->id) }}" wire:navigate='true'  icon="pencil" class="cursor-pointer">Edit</flux:menu.item>
                                             @endcan
 
                                             @can('view students')
                                                 <flux:menu.separator />
-                                                <flux:menu.item href="{{ route('admin.dashboard.students.show',$student->id) }}" wire:navigate='true'  icon="eye" class="cursor-pointer">View</flux:menu.item>
+                                                <flux:menu.item href="{{ route('admin.dashboard.users.show',$student->user->id) }}" wire:navigate='true'  icon="eye" class="cursor-pointer">View</flux:menu.item>
                                             @endcan
 
                                         </flux:menu>
