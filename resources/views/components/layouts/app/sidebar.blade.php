@@ -63,6 +63,15 @@
            
                 </flux:navlist.group>
             </flux:navlist>
+
+
+            <flux:navlist variant="outline">
+                <flux:navlist.group heading="Mark Management" class="grid">
+                 
+                        <flux:navlist.item icon="bookmark-square" :href="route('admin.dashboard.students')" :current="request()->routeIs('admin.dashboard.students*')" class="mb-2" wire:navigate>{{ __('Sequences') }}</flux:navlist.item>
+           
+                </flux:navlist.group>
+            </flux:navlist>
         
 
 
