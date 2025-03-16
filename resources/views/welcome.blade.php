@@ -1,6 +1,6 @@
 <x-layouts.guest :title="$title">
 
-        <nav class="nav">
+        <nav class="nav max-w-6xl mx-auto">
 
             <div class="container relative mx-auto py-5 px-7 lg:px-0 uppercase flex items-center justify-between">
 
@@ -11,8 +11,24 @@
                 </div>
 
                 <div class="nav__left">
+                   @guest
                     <a href="{{ route('register') }}" class="tracking-widest inline-block me-auto">Apply</a>
                     <a href="{{ route('login') }}" class="tracking-widest inline-block me-auto bg-indigo-600 hover:bg-indigo-500 cursor-pointer py-1 px-3 rounded-lg ms-4">Login</a>
+                   @endguest
+
+                   @auth
+                       @if(auth()->user()->hasRole('administrator'))
+
+                                <a href="{{ route('admin.dashboard') }}" class="tracking-widest inline-block me-auto bg-indigo-600 hover:bg-indigo-500 cursor-pointer py-1 px-3 rounded-lg ms-4">Dashboard</a>
+
+                       @endif
+
+                       @if(auth()->user()->hasRole('student'))
+
+                            <a href="{{ route('admin.dashboard') }}" class="tracking-widest inline-block me-auto bg-indigo-600 hover:bg-indigo-500 cursor-pointer py-1 px-3 rounded-lg ms-4">Dashboard</a>
+
+                       @endif
+                   @endauth 
                 </div>
                 
             </div>
@@ -20,7 +36,7 @@
         </nav>
 
             <!-- Start Hero -->
-            <section class="relative table w-full py-4 px-7 lg:px-0  overflow-hidden min-h-screen">
+            <section class="relative table w-full py-8 px-7 lg:px-0  overflow-hidden min-h-screen max-w-6xl mx-auto">
                 <div class="container relative mx-auto">
                     <div class="relative grid md:grid-cols-12 grid-cols-1 items-center mt-10 gap-[30px]">
                         <div class="md:col-span-6">

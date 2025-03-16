@@ -22,6 +22,8 @@
 
         
             <flux:button variant="primary" type="submit" class="block uppercase text-xs font-semibold tracking-widest cursor-pointer">Update</flux:button>
+
+            <x-action-message on='saved' />
         
         </form>
     

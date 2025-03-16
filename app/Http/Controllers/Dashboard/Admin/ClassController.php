@@ -4,9 +4,10 @@ namespace App\Http\Controllers\Dashboard\Admin;
 
 use App\Models\Student;
 use App\Models\SchoolClass;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use Barryvdh\DomPDF\Facade\Pdf;
+use App\Http\Controllers\Controller;
 
 class ClassController extends Controller
 {
@@ -15,13 +16,13 @@ class ClassController extends Controller
         $classes = SchoolClass::all();
 
         return view('dashboard.admin.classes.index', [
-            'classes' => $classes
+            'classes' => $classes 
         ]);
     }
 
-    public function edit(int $id) 
+    public function edit(int $id)  
     {
-        $class = SchoolClass::findOrFail($id);
+        $class = SchoolClass::findOrFail($id); 
         
         return view('dashboard.admin.classes.edit', [
             'class' => $class
@@ -44,6 +45,6 @@ class ClassController extends Controller
         $class = SchoolClass::findOrFail($id);
         $students = Student::where(['class_id' => $id])->get();
         $pdf = Pdf::loadView('pdf.classlist', ['students' => $students, 'class' => $class]);
-        return $pdf->download(strtolower(str_replace(' ', '_',$class->name))."_classlist.pdf");
+        return $pdf->download(strtolower(str_replace(' ', '_',$class->name))."_classlist_".strtoupper(Str::random(10)).".pdf");
     }
 }

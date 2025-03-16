@@ -35,6 +35,8 @@ class Create extends Component
             'gender' => $validated['gender']
         ]);
 
+        $this->dispatch('saved');
+
         // event(new Registered(($user = User::create($validated))));
 
         $user->assignRole($validated['role']);

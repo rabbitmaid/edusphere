@@ -44,13 +44,17 @@ class Edit extends Component
 
         $student = Student::findOrFail($id);
         
-        $student->update([
+       $update = $student->update([
             'class_id' => $validated['schoolClass'],
             'address' => $validated['address'],
             'date_of_birth' => $validated['dateOfBirth'],
             'place_of_birth' => $validated['placeOfBirth'],
             'phone' => $validated['phone'],
         ]);
+
+        if($update) {
+            $this->dispatch('saved');
+        }
 
         $this->redirect(route('admin.dashboard.students', $student->id), navigate: true);
     }

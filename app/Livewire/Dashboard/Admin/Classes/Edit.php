@@ -29,10 +29,14 @@ class Edit extends Component
 
         $class = SchoolClass::find($this->id);
 
-        $class->update([
+        $update = $class->update([
             'name' => $validated['name'],
             'cycle_id' => $validated['cycle'],
         ]);
+
+        if($update) {
+            $this->dispatch('saved');
+        }
 
         $this->redirect(route('admin.dashboard.classes', absolute: false), navigate: true);
     }

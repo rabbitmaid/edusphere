@@ -27,4 +27,9 @@ class SchoolClass extends Model
     {
         return Student::where('class_id', $this->id)->get()->count();
     }
+
+    public function subjects()
+    {
+        return $this->hasMany(Subject::class);
+    }
 }

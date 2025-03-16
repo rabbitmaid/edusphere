@@ -4,6 +4,7 @@ use App\Http\Controllers\Dashboard\Admin\UserController;
 use App\Http\Controllers\Dashboard\Admin\ClassController;
 use App\Http\Controllers\Dashboard\Admin\StudentController;
 use App\Http\Controllers\Dashboard\Admin\OverviewController;
+use App\Http\Controllers\Dashboard\Admin\SubjectController;
 
 Route::prefix('admin')->middleware(['auth', 'verified'])->group(function() {
     
@@ -32,6 +33,11 @@ Route::prefix('admin')->middleware(['auth', 'verified'])->group(function() {
     Route::get('classes/student/{id}', [ClassController::class, 'student'])->name('admin.dashboard.classes.student');
 
     Route::get('classes/student/list/{id}', [ClassController::class, 'list'])->name('admin.dashboard.classes.list');
+
+    
+    Route::get('/subjects', [SubjectController::class, 'index'])->name('admin.dashboard.subjects');
+    Route::get('/subjects/create', [SubjectController::class, 'create'])->name('admin.dashboard.subjects.create');
+    Route::get('/subjects/edit/{id}', [SubjectController::class, 'edit'])->name('admin.dashboard.subjects.edit');
     
 
 

@@ -50,6 +50,8 @@ class Create extends Component
             'phone' => $validated['phone'],
         ]);
 
+        $this->dispatch('saved');
+
         $this->redirect(route('admin.dashboard.students', absolute: false), navigate: true);
     }
 

@@ -40,4 +40,6 @@
 
     <flux:button variant="primary" type="submit" class="block uppercase text-xs font-semibold tracking-widest cursor-pointer">Create</flux:button>
 
+    <x-action-message on='saved' />
+
 </form>

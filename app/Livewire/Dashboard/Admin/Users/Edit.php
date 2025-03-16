@@ -50,6 +50,8 @@ class Edit extends Component
             $user->email_verified_at = null;
         }
 
+        $this->dispatch('saved');
+
         $this->redirect(route('admin.dashboard.users', absolute: false), navigate: true);
     }
 
@@ -64,6 +66,8 @@ class Edit extends Component
         $user->update([
             'password' => Hash::make($validated['password']),
         ]);
+
+        $this->dispatch('saved');
 
         $this->redirect(route('admin.dashboard.users.edit', $user->id), navigate: true);
     }
