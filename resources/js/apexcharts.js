@@ -2,9 +2,19 @@ import ApexCharts from 'apexcharts'
 
 document.addEventListener('livewire:navigated', () => {
 
-   let chartElement = document.querySelector("#chart");
+   let chartElement = document.querySelector("#transactionChart");
 
    if(chartElement !== null) {
+
+    let chartElementData = JSON.parse(chartElement.getAttribute('data-chart'));
+
+    let amounts = [];
+    let hours = [];
+
+    chartElementData.forEach(data => {
+        amounts.push(data.amount);
+        hours.push(data.time);
+    });
 
       let preferredScheme = Flux.appearance;
     
@@ -63,11 +73,11 @@ document.addEventListener('livewire:navigated', () => {
             },
     
             series: [{
-              name: 'sales',
-              data: [30,40,35,50,49,60,70,91,125]
+              name: 'transactions',
+              data: amounts
             }],
             xaxis: {
-              categories: [1991,1992,1993,1994,1995,1996,1997, 1998,1999]
+              categories: hours
             }
           }
           
@@ -81,7 +91,7 @@ document.addEventListener('livewire:navigated', () => {
 
     let genderChartData = JSON.parse(genderChartElement.getAttribute('data-chart'));
 
-    console.log(genderChartData);
+    // console.log(genderChartData);
 
 
     let preferredScheme = Flux.appearance;

@@ -62,7 +62,8 @@
         <div class="grid auto-rows-min gap-4 md:grid-cols-3">
 
             <div class="md:col-span-2 relative py-8 px-8 overflow-hidden rounded-xl border border-zinc-200 dark:border-neutral-700 bg-zinc-50 dark:bg-zinc-900">
-                <div id="chart"></div>
+                <p class="text-accent dark:text-white absolute top-5 left-5">Daily Transactions</p>
+                <div id="transactionChart" data-chart="{{ $dailyTransactions }}"></div>
             </div>
 
             <div class="md:col-span-1 relative py-8 px-8 overflow-hidden rounded-xl border border-zinc-200 dark:border-neutral-700 bg-zinc-50 dark:bg-zinc-900 flex items-center justify-center">

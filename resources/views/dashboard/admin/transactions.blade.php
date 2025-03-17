@@ -38,7 +38,7 @@
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $transaction->reference }}</td>
                             <td>{{ $transaction->type }}</td>
-                            <td>{{ $transaction->amount }}</td>
+                            <td>{{ $transaction->amount }} {{ $transaction->currency }}</td>
                             <td>
                                 @if($transaction->status == "initiated")
                                     <flux:badge color="gray" class="uppercase text-xs">Initiated</flux:badge>

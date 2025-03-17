@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Models\SchoolClass;
 use App\Models\Sequence;
 use App\Models\Subject;
+use App\Models\Transaction;
 
 class OverviewController extends Controller
 {
@@ -21,6 +22,7 @@ class OverviewController extends Controller
         $totalMaleUsers = User::where(['gender' => 'male'])->count();
         $totalFemaleUsers = User::where(['gender' => 'female'])->count();
         $totalSequences = Sequence::count();
+        $dailyTransactions = Transaction::dailyTransactions();
  
         return view('dashboard.admin.index', [
             'totalAdmins' => $totalAdmins,
@@ -30,7 +32,8 @@ class OverviewController extends Controller
             'totalUserAccounts' => $totalUserAccounts,
             'totalMaleUsers' => $totalMaleUsers,
             'totalFemaleUsers' => $totalFemaleUsers,
-            'totalSequences' => $totalSequences
+            'totalSequences' => $totalSequences,
+            'dailyTransactions' => $dailyTransactions
         ]);
     }
 }
