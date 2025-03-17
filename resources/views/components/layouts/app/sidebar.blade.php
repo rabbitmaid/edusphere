@@ -69,17 +69,19 @@
             @endcan
 
 
-            
-            <flux:navlist variant="outline">
-                <flux:navlist.group heading="Records and Settings" class="grid">
+            @can('manage settings')
+                <flux:navlist variant="outline">
+                    <flux:navlist.group heading="Records and Settings" class="grid">
 
-                    <flux:navlist.item icon="chart-bar-square" :href="route('admin.dashboard.settings')" :current="request()->routeIs('admin.dashboard.settings*')" class="mb-2" wire:navigate>{{ __('Transactions') }}</flux:navlist.item>
-                 
-                    <flux:navlist.item icon="cog" :href="route('admin.dashboard.settings')" :current="request()->routeIs('admin.dashboard.settings*')" class="mb-2" wire:navigate>{{ __('System Settings') }}</flux:navlist.item>
- 
-           
-                </flux:navlist.group>
-            </flux:navlist>
+                        <flux:navlist.item icon="chart-bar-square" :href="route('admin.dashboard.settings')" :current="request()->routeIs('admin.dashboard.settings*')" class="mb-2" wire:navigate>{{ __('Transactions') }}</flux:navlist.item>
+                    
+                        <flux:navlist.item icon="cog" :href="route('admin.dashboard.settings')" :current="request()->routeIs('admin.dashboard.settings*')" class="mb-2" wire:navigate>{{ __('System Settings') }}</flux:navlist.item>
+    
+            
+                    </flux:navlist.group>
+                </flux:navlist>
+            @endcan
+            
 
 
             <flux:spacer />

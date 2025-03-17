@@ -41,6 +41,7 @@ class RoleAndPermissionSeeder extends Seeder
             ['name' => 'view marks'],
             ['name' => 'create marks'],
             ['name' => 'update marks'],
+            ['name' => 'manage settings']
         ];
 
         foreach($roles as $role){
