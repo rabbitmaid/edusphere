@@ -35,6 +35,10 @@
                 @endforeach
                 
             @endisset
+
+            @if(count($sequences) == 0)
+                <p>No Sequences Found</p>
+            @endif
             
         </div>
     </div>

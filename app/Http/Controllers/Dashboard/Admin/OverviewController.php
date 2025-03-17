@@ -3,12 +3,13 @@
 namespace App\Http\Controllers\Dashboard\Admin;
 
 use App\Models\User;
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use App\Models\SchoolClass;
-use App\Models\Sequence;
 use App\Models\Subject;
+use App\Models\Sequence;
+use App\Models\SchoolClass;
 use App\Models\Transaction;
+use Illuminate\Http\Request;
+use App\Models\SystemSetting;
+use App\Http\Controllers\Controller;
 
 class OverviewController extends Controller
 {
@@ -23,6 +24,7 @@ class OverviewController extends Controller
         $totalFemaleUsers = User::where(['gender' => 'female'])->count();
         $totalSequences = Sequence::count();
         $dailyTransactions = Transaction::dailyTransactions();
+        $totalTransactions = Transaction::totalTransactions()->total;
  
         return view('dashboard.admin.index', [
             'totalAdmins' => $totalAdmins,
@@ -33,7 +35,9 @@ class OverviewController extends Controller
             'totalMaleUsers' => $totalMaleUsers,
             'totalFemaleUsers' => $totalFemaleUsers,
             'totalSequences' => $totalSequences,
-            'dailyTransactions' => $dailyTransactions
+            'dailyTransactions' => $dailyTransactions,
+            'totalTransactions' => $totalTransactions,
+            'currency' => SystemSetting::currency()
         ]);
     }
 }

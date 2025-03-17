@@ -20,18 +20,22 @@
                 <flux:heading size="xl" class="mb-1">{{ $totalStudents ?? 0 }}</flux:heading>
             </div>
 
+         
+
             <div class="relative overflow-hidden rounded-xl bg-zinc-50 dark:bg-zinc-900 border border-neutral-200 dark:border-neutral-700 px-8 py-5 transition-transform ease-in-out 350ms hover:scale-95 cursor-pointer">
                 <flux:heading size="lg" level="3">Total Subjects</flux:heading>
-                <flux:subheading size="lg" class="mb-3">Number of Subjects in the system</flux:subheading>
+                <flux:subheading size="lg" class="mb-3">Number of existing subjects</flux:subheading>
                 <flux:heading size="xl" class="mb-1">{{ $totalSubjects ?? 0 }}</flux:heading>
             </div>
-            <div class="relative overflow-hidden rounded-xl bg-zinc-50 dark:bg-zinc-900 border border-neutral-200 dark:border-neutral-700 px-8 py-5 transition-transform ease-in-out 350ms hover:scale-95 cursor-pointer">
 
-                <flux:heading size="lg" level="3">Total Classes</flux:heading>
-                <flux:subheading size="lg" class="mb-3">Number of classes in the system</flux:subheading>
-                <flux:heading size="xl" class="mb-1">{{ $totalClasses ?? 0 }}</flux:heading>
-                
+            <div class="relative overflow-hidden rounded-xl bg-zinc-50 dark:bg-zinc-900 border border-neutral-200 dark:border-neutral-700 px-8 py-5 transition-transform ease-in-out 350ms hover:scale-95 cursor-pointer">
+                <flux:heading size="lg" level="3">Total Transaction Amount</flux:heading>
+                <flux:subheading size="lg" class="mb-3">Successful transactions</flux:subheading>
+                <flux:heading size="xl" class="mb-1">
+                    <flux:badge color="indigo"> {{ $totalTransactions ?? 0 }} {{ $currency }} </flux:badge>
+                </flux:heading>
             </div>
+
 
             <div class="relative overflow-hidden rounded-xl bg-zinc-50 dark:bg-zinc-900 border border-neutral-200 dark:border-neutral-700 px-8 py-5 transition-transform ease-in-out 350ms hover:scale-95 cursor-pointer">
                 <flux:heading size="lg" level="3">Total User Accounts</flux:heading>
@@ -52,9 +56,9 @@
             </div>
             <div class="relative overflow-hidden rounded-xl bg-zinc-50 dark:bg-zinc-900 border border-neutral-200 dark:border-neutral-700 px-8 py-5 transition-transform ease-in-out 350ms hover:scale-95 cursor-pointer">
 
-                <flux:heading size="lg" level="3">Total Sequences</flux:heading>
-                <flux:subheading size="lg" class="mb-3">Number of existing sequences</flux:subheading>
-                <flux:heading size="xl" class="mb-1">{{ $totalSequences ?? 0 }}</flux:heading>
+                <flux:heading size="lg" level="3">Total Classes</flux:heading>
+                <flux:subheading size="lg" class="mb-3">Number of classes in the system</flux:subheading>
+                <flux:heading size="xl" class="mb-1">{{ $totalClasses ?? 0 }}</flux:heading>
                 
             </div>
         </div>

@@ -33,6 +33,11 @@
                 @endforeach
                 
             @endisset
+
+
+            @if(count($subjects) == 0)
+                <p>No Subjects Found</p>
+            @endif
             
         </div>
     </div>
