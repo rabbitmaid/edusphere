@@ -31,5 +31,12 @@ Route::middleware('auth')->group(function () {
         ->name('password.confirm');
 });
 
+
+Route::middleware('auth', 'role:student')->group(function () {
+    Volt::route('/register/student/profile', 'auth.register-student')
+    ->name('register.student.profile');
+});
+
+
 Route::post('logout', App\Livewire\Actions\Logout::class)
     ->name('logout');

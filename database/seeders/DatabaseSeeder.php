@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
 
         $this->call(TermAndSequenceSeeder::class);
         $this->call(RoleAndPermissionSeeder::class);
+        $this->call(SystemSettingSeeder::class);
         $this->call(CycleSeeder::class);
         $this->call(ClassSeeder::class);
     }
