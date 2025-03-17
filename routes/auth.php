@@ -34,7 +34,10 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware('auth', 'role:student')->group(function () {
     Volt::route('/register/student/profile', 'auth.register-student')
-    ->name('register.student.profile');
+    ->name('register.student.profile')->middleware('student_has_profile');
+
+    Volt::route('/register/student/pay', 'auth.pay-registration')
+    ->name('register.student.pay');
 });
 
 

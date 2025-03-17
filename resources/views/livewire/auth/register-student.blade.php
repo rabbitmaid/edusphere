@@ -9,6 +9,7 @@ use Livewire\Attributes\Layout;
 use Livewire\Volt\Component;
 use App\Models\Student;
 use App\Models\SchoolClass;
+use App\Models\SystemSetting;
 use Illuminate\Support\Str;
 
 new #[Layout('components.layouts.auth')] class extends Component {
@@ -31,6 +32,7 @@ new #[Layout('components.layouts.auth')] class extends Component {
         $this->matricule = $matricule;
 
         $this->allSchoolClasses = SchoolClass::all();
+
     }
 
     /**
@@ -100,9 +102,4 @@ new #[Layout('components.layouts.auth')] class extends Component {
     
         <x-action-message on='saved' />
     </form>
-
-    <div class="space-x-1 text-center text-sm text-zinc-600 dark:text-zinc-400">
-        Already have an account?
-        <flux:link :href="route('login')" wire:navigate>Log in</flux:link>
-    </div>
 </div>

@@ -13,7 +13,8 @@ class Student extends Model
         'address',
         'date_of_birth',
         'place_of_birth',
-        'phone'
+        'phone',
+        'is_registered'
     ];
 
     protected function casts(): array

@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Middleware\CheckStudentHasProfile;
+use App\Http\Middleware\CheckStudentNotRegistered;
+use App\Http\Middleware\StudentHasProfile;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
@@ -15,6 +17,8 @@ return Application::configure(basePath: dirname(__DIR__))
         
         $middleware->alias([
             'check_student_profile' => CheckStudentHasProfile::class,
+            'student_has_profile' => StudentHasProfile::class,
+            'check_student_not_registered' => CheckStudentNotRegistered::class,
             'role' => \Spatie\Permission\Middleware\RoleMiddleware::class,
             'permission' => \Spatie\Permission\Middleware\PermissionMiddleware::class,
             'role_or_permission' => \Spatie\Permission\Middleware\RoleOrPermissionMiddleware::class
