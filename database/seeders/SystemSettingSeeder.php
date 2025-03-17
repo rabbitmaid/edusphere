@@ -13,9 +13,13 @@ class SystemSettingSeeder extends Seeder
      */
     public function run(): void
     {
-         SystemSetting::firstOrCreate(
+        $settings = [
             ['name' => 'registration_fee', 'value' => '2'],
             ['name' => 'currency', 'value' => 'XAF']
-        );
+        ];
+
+        foreach($settings as $setting) {
+            SystemSetting::firstOrCreate($setting);
+        }
     }
 }

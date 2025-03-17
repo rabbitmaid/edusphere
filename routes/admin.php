@@ -6,6 +6,7 @@ use App\Http\Controllers\Dashboard\Admin\ClassController;
 use App\Http\Controllers\Dashboard\Admin\StudentController;
 use App\Http\Controllers\Dashboard\Admin\SubjectController;
 use App\Http\Controllers\Dashboard\Admin\OverviewController;
+use App\Http\Controllers\Dashboard\Admin\SystemSettingController;
 
 Route::prefix('admin')->middleware(['auth', 'verified', 'role:administrator'])->group(function() {
     
@@ -47,6 +48,9 @@ Route::prefix('admin')->middleware(['auth', 'verified', 'role:administrator'])->
     Route::get('/marks/sequence/fill/{sequence}/{class}/{subject}', [MarkController::class, 'fill'])->name('admin.dashboard.marks.sequence.fill');
 
     Route::post('/marks/sequence/fill/store', [MarkController::class, 'storeMark'])->name('admin.dashboard.marks.sequence.fill.store');
+
+
+    Route::get('/settings', [SystemSettingController::class, 'index'])->name('admin.dashboard.settings');
 
 });
     
