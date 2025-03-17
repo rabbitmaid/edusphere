@@ -4,8 +4,9 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Auth\Events\Verified;
-use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
 class VerifyEmailController extends Controller
 {
@@ -15,7 +16,14 @@ class VerifyEmailController extends Controller
     public function __invoke(EmailVerificationRequest $request): RedirectResponse
     {
         if ($request->user()->hasVerifiedEmail()) {
-            return redirect()->intended(route('dashboard', absolute: false).'?verified=1');
+            // return redirect()->intended(route('dashboard', absolute: false).'?verified=1');
+
+            if(Auth::user()->hasRole(\App\Helpers\Roles::ADMINISTRATOR) || Auth::user()->hasRole(\App\Helpers\Roles::STAFF)){
+                return redirect()->intended(default: route('admin.dashboard', absolute: false).'?verified=1');
+            }
+            else {
+                return redirect()->intended(default: route('student.dashboard', absolute: false).'?verified=1');
+            }
         }
 
         if ($request->user()->markEmailAsVerified()) {
@@ -25,6 +33,13 @@ class VerifyEmailController extends Controller
             event(new Verified($user));
         }
 
-        return redirect()->intended(route('dashboard', absolute: false).'?verified=1');
+        if(Auth::user()->hasRole(\App\Helpers\Roles::ADMINISTRATOR) || Auth::user()->hasRole(\App\Helpers\Roles::STAFF)){
+            return redirect()->intended(default: route('admin.dashboard', absolute: false).'?verified=1');
+        }
+        else {
+            return redirect()->intended(default: route('student.dashboard', absolute: false).'?verified=1');
+        }
+
+        // return redirect()->intended(route('dashboard', absolute: false).'?verified=1');
     }
 }

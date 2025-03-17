@@ -13,6 +13,7 @@ new #[Layout('components.layouts.auth')] class extends Component {
     public string $email = '';
     public string $password = '';
     public string $password_confirmation = '';
+    public string $gender = '';
 
     /**
      * Handle an incoming registration request.
@@ -23,21 +24,18 @@ new #[Layout('components.layouts.auth')] class extends Component {
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
             'password' => ['required', 'string', 'confirmed', Rules\Password::defaults()],
+            'gender' => ['required']
         ]);
 
         $validated['password'] = Hash::make($validated['password']);
 
         event(new Registered(($user = User::create($validated))));
+        $user->assignRole('student');
 
         Auth::login($user);
 
-        if(Auth::user()->hasRole(\App\Helpers\Roles::ADMINISTRATOR) || Auth::user()->hasRole(\App\Helpers\Roles::STAFF)){
-            $this->redirectIntended(default: route('admin.dashboard', absolute: false), navigate: true);
-        }
-        else {
-            $this->redirectIntended(default: route('student.dashboard', absolute: false), navigate: true);
-        }
-
+  
+        $this->redirectIntended(default: route('student.dashboard', absolute: false), navigate: true);
         
         // $this->redirect(route('dashboard', absolute: false), navigate: true);
     }
@@ -75,6 +73,16 @@ new #[Layout('components.layouts.auth')] class extends Component {
             autocomplete="email"
             placeholder="email@example.com"
         />
+
+        {{-- Gender --}}
+
+        <flux:field>
+            <flux:select label="Gender" wire:model='gender'>
+                <option selected disabled value="">Select gender</option>
+                <option value="male">male</option>
+                <option value="female">female</option>
+            </flux:select>
+        </flux:field>
 
         <!-- Password -->
         <flux:input

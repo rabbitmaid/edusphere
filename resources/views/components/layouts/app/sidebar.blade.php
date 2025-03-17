@@ -37,19 +37,19 @@
 
 
 
-            @can('view users')
+            @can('user management')
 
             <flux:navlist variant="outline">
                 <flux:navlist.group heading="User Management" class="grid">
                     <flux:navlist.item icon="user" :href="route('admin.dashboard.users')" :current="request()->routeIs('admin.dashboard.users*')" wire:navigate>{{ __('Users') }}</flux:navlist.item>
                     @can('create users')
-                    {{-- <flux:navlist.item href="{{ route('admin.dashboard.users.create') }}" icon="plus" :current="request()->routeIs('admin.dashboard.users.create')" wire:navigate>Add User</flux:navlist.item> --}}
                 @endcan
                 </flux:navlist.group>
             </flux:navlist>
 
             @endcan
 
+            @can('school management')
 
             <flux:navlist variant="outline">
                 <flux:navlist.group heading="School Management" class="grid">
@@ -66,6 +66,7 @@
                 </flux:navlist.group>
             </flux:navlist>
 
+            @endcan
 
 
             <flux:spacer />

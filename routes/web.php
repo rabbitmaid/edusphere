@@ -2,7 +2,6 @@
 
 use Livewire\Volt\Volt;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Dashboard\Admin\OverviewController;
 
 Route::get('/', function () {
     return view('welcome', [

@@ -7,7 +7,7 @@ use App\Http\Controllers\Dashboard\Admin\StudentController;
 use App\Http\Controllers\Dashboard\Admin\SubjectController;
 use App\Http\Controllers\Dashboard\Admin\OverviewController;
 
-Route::prefix('admin')->middleware(['auth', 'verified'])->group(function() {
+Route::prefix('admin')->middleware(['auth', 'verified', 'role:administrator'])->group(function() {
     
     Route::get('/', [OverviewController::class, 'index'])->name('admin.dashboard');
     

@@ -21,6 +21,7 @@ class RoleAndPermissionSeeder extends Seeder
         ];
 
         $permissions = [
+            ['name' => 'user management'],
             ['name' => 'view users'],
             ['name' => 'create users'],
             ['name' => 'update users'],
@@ -30,7 +31,16 @@ class RoleAndPermissionSeeder extends Seeder
             ['name' => 'view students'],
             ['name' => 'create students'],
             ['name' => 'update students'],
-            ['name' => 'delete students']
+            ['name' => 'delete students'],
+            ['name' => 'school management'],
+            ['name' => 'view classes'],
+            ['name' => 'update classes'],
+            ['name' => 'view subjects'],
+            ['name' => 'create subjects'],
+            ['name' => 'update subjects'],
+            ['name' => 'view marks'],
+            ['name' => 'create marks'],
+            ['name' => 'update marks'],
         ];
 
         foreach($roles as $role){
