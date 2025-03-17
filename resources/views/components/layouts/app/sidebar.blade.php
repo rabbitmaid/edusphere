@@ -59,24 +59,14 @@
 
                         <flux:navlist.item icon="home-modern" :href="route('admin.dashboard.classes')" :current="request()->routeIs('admin.dashboard.classes*')" class="mb-2" wire:navigate>{{ __('Classes') }}</flux:navlist.item>
            
-                        <flux:navlist.item icon="book-open" :href="route('admin.dashboard.subjects')" :current="request()->routeIs('admin.dashboard.subjects*')" wire:navigate>{{ __('Subjects') }}</flux:navlist.item>
+                        <flux:navlist.item icon="book-open" :href="route('admin.dashboard.subjects')" :current="request()->routeIs('admin.dashboard.subjects*')" class="mb-2" wire:navigate>{{ __('Subjects') }}</flux:navlist.item>
+
+                        <flux:navlist.item icon="bookmark-square" :href="route('admin.dashboard.marks')" :current="request()->routeIs('admin.dashboard.marks*')" class="mb-2" wire:navigate>{{ __('Marks') }}</flux:navlist.item>
            
                 </flux:navlist.group>
             </flux:navlist>
 
 
-            <flux:navlist variant="outline">
-                <flux:navlist.group heading="Mark Management" class="grid">
-                 
-                        <flux:navlist.item icon="bookmark-square" :href="route('admin.dashboard.students')" :current="request()->routeIs('admin.dashboard.students*')" class="mb-2" wire:navigate>{{ __('Sequences') }}</flux:navlist.item>
-           
-                </flux:navlist.group>
-            </flux:navlist>
-        
-
-
-
-          
 
             <flux:spacer />
 

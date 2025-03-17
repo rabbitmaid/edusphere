@@ -13,19 +13,19 @@
                 <div class="nav__left">
                    @guest
                     <a href="{{ route('register') }}" class="tracking-widest inline-block me-auto">Apply</a>
-                    <a href="{{ route('login') }}" class="tracking-widest inline-block me-auto bg-indigo-600 hover:bg-indigo-500 cursor-pointer py-1 px-3 rounded-lg ms-4">Login</a>
+                    <a href="{{ route('login') }}" class="tracking-widest inline-block me-auto text-white bg-indigo-600 hover:bg-indigo-500 cursor-pointer py-1 px-3 rounded-lg ms-4">Login</a>
                    @endguest
 
                    @auth
                        @if(auth()->user()->hasRole('administrator'))
 
-                                <a href="{{ route('admin.dashboard') }}" class="tracking-widest inline-block me-auto bg-indigo-600 hover:bg-indigo-500 cursor-pointer py-1 px-3 rounded-lg ms-4">Dashboard</a>
+                                <a href="{{ route('admin.dashboard') }}" class="tracking-widest inline-block me-auto text-white bg-indigo-600 hover:bg-indigo-500 cursor-pointer py-1 px-3 rounded-lg ms-4">Dashboard</a>
 
                        @endif
 
                        @if(auth()->user()->hasRole('student'))
 
-                            <a href="{{ route('admin.dashboard') }}" class="tracking-widest inline-block me-auto bg-indigo-600 hover:bg-indigo-500 cursor-pointer py-1 px-3 rounded-lg ms-4">Dashboard</a>
+                            <a href="{{ route('admin.dashboard') }}" class="tracking-widest inline-block me-auto text-white bg-indigo-600 hover:bg-indigo-500 cursor-pointer py-1 px-3 rounded-lg ms-4">Dashboard</a>
 
                        @endif
                    @endauth 
@@ -41,7 +41,7 @@
                     <div class="relative grid md:grid-cols-12 grid-cols-1 items-center mt-10 gap-[30px]">
                         <div class="md:col-span-6">
                             <div class="md:me-8">
-                                <h4 class="font-bold lg:leading-normal leading-normal text-4xl lg:text-5xl mb-5 text-black dark:text-white relative">Easiest way to <span class="before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-indigo-600 relative inline-block"><span class="relative text-white">manage</span></span> your students</h4>
+                                <h4 class="font-bold lg:leading-normal leading-normal text-4xl lg:text-5xl mb-5 text-white relative">Easiest way to <span class="before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-indigo-600 relative inline-block"><span class="relative text-white">manage</span></span> your students</h4>
                                 <p class="text-slate-400 text-lg max-w-xl">Edusphere software application is designed to manage and automate various aspects of student data and administrative processes in schools.</p>
 
                                 <p class="text-slate-400 text-lg max-w-xl mt-8">Don't yet have an account?  You can register.</p>

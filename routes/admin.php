@@ -1,10 +1,11 @@
 <?php
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Dashboard\Admin\MarkController;
 use App\Http\Controllers\Dashboard\Admin\UserController;
 use App\Http\Controllers\Dashboard\Admin\ClassController;
 use App\Http\Controllers\Dashboard\Admin\StudentController;
-use App\Http\Controllers\Dashboard\Admin\OverviewController;
 use App\Http\Controllers\Dashboard\Admin\SubjectController;
+use App\Http\Controllers\Dashboard\Admin\OverviewController;
 
 Route::prefix('admin')->middleware(['auth', 'verified'])->group(function() {
     
@@ -34,13 +35,18 @@ Route::prefix('admin')->middleware(['auth', 'verified'])->group(function() {
 
     Route::get('classes/student/list/{id}', [ClassController::class, 'list'])->name('admin.dashboard.classes.list');
 
-    
     Route::get('/subjects', [SubjectController::class, 'index'])->name('admin.dashboard.subjects');
     Route::get('/subjects/create', [SubjectController::class, 'create'])->name('admin.dashboard.subjects.create');
     Route::get('/subjects/edit/{id}', [SubjectController::class, 'edit'])->name('admin.dashboard.subjects.edit');
-    
 
+    Route::get('/marks', [MarkController::class, 'index'])->name('admin.dashboard.marks');
+    Route::get('/marks/sequences/{class}', [MarkController::class, 'sequence'])->name('admin.dashboard.marks.sequences');
 
+    Route::get('/marks/sequences/subjects/{sequence}/{class}', [MarkController::class, 'subject'])->name('admin.dashboard.marks.sequences.subjects');
+
+    Route::get('/marks/sequence/fill/{sequence}/{class}/{subject}', [MarkController::class, 'fill'])->name('admin.dashboard.marks.sequence.fill');
+
+    Route::post('/marks/sequence/fill/store', [MarkController::class, 'storeMark'])->name('admin.dashboard.marks.sequence.fill.store');
 
 });
     

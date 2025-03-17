@@ -31,4 +31,23 @@ class Student extends Model
     public function class() {
         return $this->belongsTo(SchoolClass::class);
     }
+
+    public function marks() {
+        return $this->hasMany(Mark::class);
+    }
+
+    public function getMark($sequenceId, $subjectId) {
+        $mark = Mark::where(['student_id' => $this->id, 'sequence_id' => $sequenceId, 'subject_id' => $subjectId])->first();
+        return $mark->score ?? 0;
+    }
+
+    public function markExists($sequenceId, $subjectId) {
+        $mark = Mark::where(['student_id' => $this->id, 'sequence_id' => $sequenceId, 'subject_id' => $subjectId])->first();
+        
+        if($mark) {
+            return true;
+        }
+
+        return false;
+    }
 }
