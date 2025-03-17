@@ -7,6 +7,7 @@ use App\Http\Controllers\Dashboard\Admin\StudentController;
 use App\Http\Controllers\Dashboard\Admin\SubjectController;
 use App\Http\Controllers\Dashboard\Admin\OverviewController;
 use App\Http\Controllers\Dashboard\Admin\SystemSettingController;
+use App\Http\Controllers\Dashboard\Admin\TransactionController;
 
 Route::prefix('admin')->middleware(['auth', 'verified', 'role:administrator'])->group(function() {
     
@@ -51,6 +52,8 @@ Route::prefix('admin')->middleware(['auth', 'verified', 'role:administrator'])->
 
 
     Route::get('/settings', [SystemSettingController::class, 'index'])->name('admin.dashboard.settings');
+
+    Route::get('/transactions', [TransactionController::class, 'index'])->name('admin.dashboard.transactions');
 
 });
     

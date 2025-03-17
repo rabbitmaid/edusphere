@@ -16,6 +16,7 @@ use MeSomb\MeSomb;
 use MeSomb\Util\RandomGenerator;
 use MeSomb\Exception\ServerException;
 use MeSomb\Operation\PaymentOperation;
+use App\Events\RegistrationPaid;
 
 new #[Layout('components.layouts.auth')] class extends Component {
     public string $phoneNumber = '';
@@ -25,7 +26,6 @@ new #[Layout('components.layouts.auth')] class extends Component {
 
     public function mount()
     {
-
         $this->registrationFee = SystemSetting::registrationFee();
         $this->currency = SystemSetting::currency();
     }
@@ -40,19 +40,21 @@ new #[Layout('components.layouts.auth')] class extends Component {
             'service' => 'required',
         ]);
 
-        $reference = Str::random(15);
+        $reference = Str::upper(Str::random(20));
 
         $transaction = Transaction::create([
+            'user_id' => Auth::user()->id,
             'reference' => $reference,
             'type' => 'registration',
             'amount' => $this->registrationFee,
+            'currency' => $this->currency,
             'status' => 'initiated'
         ]);
 
 
         try {
             $client = new PaymentOperation(env('MESOMB_APP_KEY'), env('MESOMB_ACCESS_KEY'), env('MESOMB_SECRET_KEY'));
-            MeSomb::setVerifySslCerts(false);
+            MeSomb::setVerifySslCerts(true);
 
         
             $response = $client->makeCollect([
@@ -77,6 +79,11 @@ new #[Layout('components.layouts.auth')] class extends Component {
                     'is_registered' => true
                 ]);
 
+                $transaction = Transaction::where(['reference' => $reference])->first();
+                $user = Auth::user();
+
+                event(new RegistrationPaid($user, $transaction));
+
                 $this->redirectIntended(default: route('student.dashboard', absolute: false), navigate: true);
 
             } else {
@@ -88,6 +95,10 @@ new #[Layout('components.layouts.auth')] class extends Component {
             }
         } catch (\ArgumentCountError $e) {
             $message = 'Payment Failed! Refresh and Try Again, Might be one of the reasons, Insufficient funds, Wrong Secret Code, Timeout, Wrong Payment Service';
+
+            Transaction::where(['reference' => $reference])->update([
+                    'status' => 'failed'
+            ]);  
             
             session()->flash('status', $e->getMessage());
             
@@ -96,11 +107,19 @@ new #[Layout('components.layouts.auth')] class extends Component {
         catch (ServerException $e) {
             $message = 'Payment Failed! Refresh and Try Again, Might be one of the reasons, Insufficient funds, Wrong Secret Code, Timeout, Wrong Payment Service';
 
+            Transaction::where(['reference' => $reference])->update([
+                    'status' => 'failed'
+            ]);  
+
             session()->flash('status', $e->getMessage());
             $this->redirectRoute('register.student.pay', navigate: true);
         }
         catch (\Exception $e) {
             $message = 'Payment Failed! Refresh and Try Again, Might be one of the reasons, Insufficient funds, Wrong Secret Code, Timeout, Wrong Payment Service';
+
+            Transaction::where(['reference' => $reference])->update([
+                    'status' => 'failed'
+            ]);  
 
             session()->flash('status', $e->getMessage());
             $this->redirectRoute('register.student.pay', navigate: true);
