@@ -74,7 +74,8 @@ class MarkController extends Controller
 
        $store =  Mark::storeMark($validated['score'], $validated['sequence_id'], $validated['subject_id'], Auth::user()->admin->id);
 
-       return redirect()->back();
+
+       return redirect()->back()->with('success', 'Marks Updated');
 
     }
 }

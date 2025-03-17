@@ -7,7 +7,7 @@
             <div>
                 <flux:heading size="xl" level="1" class="text-center md:text-start">All Sequences</flux:heading>
                 <flux:subheading size="lg" class="mb-6">Fill marks for a sequence</flux:subheading>
-                <flux:separator variant="subtle" />
+             
             </div>
     
             <div>
@@ -15,6 +15,7 @@
             </div>
 
         </div>
+        <flux:separator variant="subtle" />
 
 
         <div class="grid auto-rows-min gap-4 md:grid-cols-2 lg:grid-cols-4">

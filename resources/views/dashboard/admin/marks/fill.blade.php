@@ -14,6 +14,16 @@
         </div>
         <flux:separator variant="subtle" />
 
+        @if ($errors->any())
+        <div class="text-red-500">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+            </div>
+        @endif
+
         <form action="{{ route('admin.dashboard.marks.sequence.fill.store') }}" method="POST">
             @csrf
 
@@ -66,7 +76,7 @@
                 </table>
 
                 <flux:button type="submit" variant="primary" class="block uppercase text-xs font-semibold tracking-widest cursor-pointer mt-3">Update</flux:button>
-                
+
             </div>
             <!--[if ENDBLOCK]><![endif]-->
        </form>

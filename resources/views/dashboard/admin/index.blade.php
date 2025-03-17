@@ -52,9 +52,9 @@
             </div>
             <div class="relative overflow-hidden rounded-xl bg-zinc-50 dark:bg-zinc-900 border border-neutral-200 dark:border-neutral-700 px-8 py-5 transition-transform ease-in-out 350ms hover:scale-95 cursor-pointer">
 
-                <flux:heading size="lg" level="3">Total Complains</flux:heading>
-                <flux:subheading size="lg" class="mb-3">Number of existing complains</flux:subheading>
-                <flux:heading size="xl" class="mb-1">{{ $totalComplains ?? 0 }}</flux:heading>
+                <flux:heading size="lg" level="3">Total Sequences</flux:heading>
+                <flux:subheading size="lg" class="mb-3">Number of existing sequences</flux:subheading>
+                <flux:heading size="xl" class="mb-1">{{ $totalSequences ?? 0 }}</flux:heading>
                 
             </div>
         </div>

@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\SchoolClass;
+use App\Models\Sequence;
 use App\Models\Subject;
 
 class OverviewController extends Controller
@@ -19,6 +20,7 @@ class OverviewController extends Controller
         $totalUserAccounts = User::count();
         $totalMaleUsers = User::where(['gender' => 'male'])->count();
         $totalFemaleUsers = User::where(['gender' => 'female'])->count();
+        $totalSequences = Sequence::count();
  
         return view('dashboard.admin.index', [
             'totalAdmins' => $totalAdmins,
@@ -27,7 +29,8 @@ class OverviewController extends Controller
             'totalClasses' => $totalClasses,
             'totalUserAccounts' => $totalUserAccounts,
             'totalMaleUsers' => $totalMaleUsers,
-            'totalFemaleUsers' => $totalFemaleUsers
+            'totalFemaleUsers' => $totalFemaleUsers,
+            'totalSequences' => $totalSequences
         ]);
     }
 }
