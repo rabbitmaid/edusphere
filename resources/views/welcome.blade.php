@@ -25,7 +25,7 @@
 
                        @if(auth()->user()->hasRole('student'))
 
-                            <a href="{{ route('admin.dashboard') }}" class="tracking-widest inline-block me-auto text-white bg-indigo-600 hover:bg-indigo-500 cursor-pointer py-1 px-3 rounded-lg ms-4">Dashboard</a>
+                            <a href="{{ route('student.dashboard') }}" class="tracking-widest inline-block me-auto text-white bg-indigo-600 hover:bg-indigo-500 cursor-pointer py-1 px-3 rounded-lg ms-4">Dashboard</a>
 
                        @endif
                    @endauth 
